@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_My_Favourites">My_Favourites</string>
+    <string name="menu_Notifications">Notifications</string>
+    <string name="menu_More">More</string>
+    <string name="menu_Restaurant">Restaurant</string>
+    <string name="menu_Liquors">Liquors</string>
+    <string name="menu_Bakeries">Bakeries</string>
+    <string name="menu_Organic">Organic</string>
+</resources>

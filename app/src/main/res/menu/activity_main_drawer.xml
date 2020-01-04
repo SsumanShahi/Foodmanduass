@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:iconTint="@android:color/black"
+            android:title="@string/menu_home">
+            <menu>
+
+                <group android:menuCategory="container">
+                    <item android:id="@+id/nv_res"
+                        android:icon="@drawable/ic_restaurant_black_24dp"
+                        android:title="@string/menu_Restaurant"/>
+
+                    <item android:id="@+id/nv_liq"
+                        android:icon="@drawable/ic_menu_camera"
+                        android:title="@string/menu_Liquors"/>
+
+                    <item android:id="@+id/nv_bak"
+                        android:icon="@drawable/ic_menu_camera"
+                        android:title="@string/menu_Bakeries"/>
+
+                    <item android:id="@+id/nv_org"
+                        android:icon="@drawable/ic_menu_camera"
+                        android:title="@string/menu_Organic"/>
+
+                </group>
+
+
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_favorite_border_black_24dp"
+            android:iconTint="@android:color/black"
+            android:title="@string/menu_My_Favourites" />
+        <item
+            android:icon="@drawable/ic_shopping_basket_black_24dp"
+            android:iconTint="@android:color/black"
+            android:title="@string/menu_My_Basket" />
+
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:iconTint="@android:color/black"
+            android:title="@string/menu_Order_History" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:iconTint="@android:color/black"
+            android:title="@string/menu_Notifications" />
+
+
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_more_horiz_black_24dp"
+            android:iconTint="@android:color/black"
+            android:title="@string/menu_More" />
+    </group>
+
+</menu>
