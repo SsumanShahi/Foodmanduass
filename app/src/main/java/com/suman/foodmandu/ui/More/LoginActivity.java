@@ -10,9 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.suman.foodmandu.DashboardActivity;
 import com.suman.foodmandu.MainActivity;
 import com.suman.foodmandu.R;
 import com.suman.foodmandu.bill.LoginBLL;
+import com.suman.foodmandu.model.username;
 import com.suman.foodmandu.strictmode.StrictModeClass;
 
 public class LoginActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etemail,etpassword;
     private Button btnlogin,btnfb,btngoogle;
     private TextView tvaccount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +57,14 @@ public class LoginActivity extends AppCompatActivity {
         String username = etemail.getText().toString();
         String password = etpassword.getText().toString();
 
+
         LoginBLL loginBLL = new LoginBLL();
 
         StrictModeClass.StrictMode();
         if(loginBLL.checkUser(username,password)){
+
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish();
+//            finish();
         }
         else {
             Toast.makeText(this, "Either username and password", Toast.LENGTH_LONG).show();

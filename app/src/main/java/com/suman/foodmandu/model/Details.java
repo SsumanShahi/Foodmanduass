@@ -1,57 +1,47 @@
 package com.suman.foodmandu.model;
 
 public class Details {
-    private String RTitle;
-    private String Address;
-    private String Group;
-    private String DeliveryHour;
-    private int image;
+    private String image;
+    private String itemtype;
+    private String name;
+    private String location;
 
-    public Details(String RTitle, String address, String group, String deliveryHour, int image) {
-        this.RTitle = RTitle;
-        Address = address;
-        Group = group;
-        DeliveryHour = deliveryHour;
+    public Details(String image, String itemtype, String name, String location) {
         this.image = image;
+        this.itemtype = itemtype;
+        this.name = name;
+        this.location = location;
     }
 
-    public String getRTitle() {
-        return RTitle;
-    }
-
-    public void setRTitle(String RTitle) {
-        this.RTitle = RTitle;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public String getGroup() {
-        return Group;
-    }
-
-    public void setGroup(String group) {
-        Group = group;
-    }
-
-    public String getDeliveryHour() {
-        return DeliveryHour;
-    }
-
-    public void setDeliveryHour(String deliveryHour) {
-        DeliveryHour = deliveryHour;
-    }
-
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getItemtype() {
+        return itemtype;
+    }
+
+    public void setItemtype(String itemtype) {
+        this.itemtype = itemtype;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

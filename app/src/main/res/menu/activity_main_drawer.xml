@@ -8,10 +8,18 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
             android:iconTint="@android:color/black"
-            android:title="@string/menu_home">
+            android:title="@string/menu_home"/>
             <menu>
 
                 <group android:menuCategory="container">
+
+                    <item
+                    android:id="@+id/nav_homee"
+                    android:icon="@drawable/ic_home_black_24dp"
+                    android:iconTint="@android:color/black"
+                    android:title="@string/menu_home"/>
+
+
                     <item android:id="@+id/nv_res"
                         android:icon="@drawable/ic_restaurant_black_24dp"
                         android:title="@string/menu_Restaurant"/>
@@ -32,7 +40,7 @@
 
 
             </menu>
-        </item>
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_favorite_border_black_24dp"

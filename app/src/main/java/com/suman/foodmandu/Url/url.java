@@ -10,7 +10,7 @@ public class url {
 //    public static final String Base_Url="http://172.100.100.5:3000/";
 
     public static String token="Bearer";
-    public static String imagePath= Base_Url+"upload/";
+    public static String imagePath= Base_Url+"uploads/";
 
     public static Retrofit getInstance()
     {

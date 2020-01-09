@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">FOODMANDU</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
@@ -25,4 +25,6 @@
     <string name="menu_Liquors">Liquors</string>
     <string name="menu_Bakeries">Bakeries</string>
     <string name="menu_Organic">Organic</string>
+    <string name="Category">Category</string>
+    <string name="search">search</string>
 </resources>
