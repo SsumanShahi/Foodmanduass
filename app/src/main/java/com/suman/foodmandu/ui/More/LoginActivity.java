@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.suman.foodmandu.DashboardActivity;
 import com.suman.foodmandu.MainActivity;
 import com.suman.foodmandu.R;
 import com.suman.foodmandu.Url.url;

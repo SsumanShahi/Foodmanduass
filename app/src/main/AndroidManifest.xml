@@ -16,7 +16,6 @@
         android:theme="@style/AppTheme"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DashboardActivity"></activity>
         <activity android:name=".SplashActivity">
 
             <intent-filter>
