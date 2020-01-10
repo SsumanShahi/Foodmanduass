@@ -2,27 +2,27 @@ package com.suman.foodmandu.model;
 
 public class Special {
 
-    private int simage;
-    private String stitle;
+    private String image;
+    private String name;
 
-    public Special(int simage, String stitle) {
-        this.simage = simage;
-        this.stitle = stitle;
+    public Special(String image, String name) {
+        this.image = image;
+        this.name = name;
     }
 
-    public int getSimage() {
-        return simage;
+    public String getImage() {
+        return image;
     }
 
-    public void setSimage(int simage) {
-        this.simage = simage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getStitle() {
-        return stitle;
+    public String getName() {
+        return name;
     }
 
-    public void setStitle(String stitle) {
-        this.stitle = stitle;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.suman.foodmandu.Adaptar.CatgAdaptar;
 import com.suman.foodmandu.Adaptar.ChefAdaptar;
 import com.suman.foodmandu.Adaptar.DetailsAdaptar;
@@ -23,6 +24,7 @@ import com.suman.foodmandu.Adaptar.GlobeAdaptar;
 import com.suman.foodmandu.Adaptar.SpecialAdaptar;
 import com.suman.foodmandu.R;
 import com.suman.foodmandu.Url.url;
+import com.suman.foodmandu.api.Specialapi;
 import com.suman.foodmandu.api.Userapi;
 import com.suman.foodmandu.model.Catg;
 import com.suman.foodmandu.model.Chef;
@@ -156,16 +158,17 @@ public class HomeFragment extends Fragment {
                     return;
                 }
                 String imgPath = url.imagePath +  response.body().getImage();
-                StrictModeClass.StrictMode();
-                try{
-
-
-                    URL url = new URL(imgPath);
-                    card1.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
-
-                }  catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Picasso.get().load(imgPath).into(card1);
+//                StrictModeClass.StrictMode();
+//                try{
+//
+//
+//                    URL url = new URL(imgPath);
+//                    card1.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+//
+//                }  catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
 
             @Override
@@ -202,21 +205,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Chef
         chefList = new ArrayList<>();
         chefList.add(new Chef(R.drawable.ad1));
@@ -233,18 +221,44 @@ public class HomeFragment extends Fragment {
 
         //SpecialOffer
         specials = new ArrayList<>();
-        specials.add(new Special(R.drawable.offer1, "Genesis Cafe"));
-        specials.add(new Special(R.drawable.offer2, "Roadcross Biryani Kebab"));
-        specials.add(new Special(R.drawable.offer3, "Freddo Cafe"));
-        specials.add(new Special(R.drawable.offer4, "Anatolia (Halal)"));
-        specials.add(new Special(R.drawable.offer5, "Travis Restaurant"));
-        specials.add(new Special(R.drawable.offer6, "Hotel Tranquil"));
-        specials.add(new Special(R.drawable.offer7, "Vesper Fine Wine"));
-        specials.add(new Special(R.drawable.offer8, "Chef's Burger"));
-        specialAdaptar = new SpecialAdaptar(getContext(), specials);
-        recyclerView3.setHasFixedSize(true);
-        recyclerView3.setAdapter(specialAdaptar);
-        recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+//        specials.add(new Special(R.drawable.offer1, "Genesis Cafe"));
+//        specials.add(new Special(R.drawable.offer2, "Roadcross Biryani Kebab"));
+//        specials.add(new Special(R.drawable.offer3, "Freddo Cafe"));
+//        specials.add(new Special(R.drawable.offer4, "Anatolia (Halal)"));
+//        specials.add(new Special(R.drawable.offer5, "Travis Restaurant"));
+//        specials.add(new Special(R.drawable.offer6, "Hotel Tranquil"));
+//        specials.add(new Special(R.drawable.offer7, "Vesper Fine Wine"));
+//        specials.add(new Special(R.drawable.offer8, "Chef's Burger"));
+
+        Specialapi specialapi = url.getInstance().create(Specialapi.class);
+        Call<List<Special>> listCall2 = specialapi.getspecial();
+        Call<Special> listCall3 = specialapi.getspecailimage(url.token);
+        listCall2.enqueue(new Callback<List<Special>>() {
+            @Override
+            public void onResponse(Call<List<Special>> call, Response<List<Special>> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(getContext(), "Code Error" + response.code(), Toast.LENGTH_LONG).show();
+                    return;
+
+            }
+                List<Special> specials = response.body();
+                specialAdaptar = new SpecialAdaptar(getContext(), specials);
+                recyclerView3.setHasFixedSize(true);
+                recyclerView3.setAdapter(specialAdaptar);
+                recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        }
+
+            @Override
+            public void onFailure(Call<List<Special>> call, Throwable t) {
+                Log.d("Mero Msg", "onFailure:" + t.getLocalizedMessage());
+                Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+
+            });
+
+
+
 
         //Globe
         globes = new ArrayList<>();

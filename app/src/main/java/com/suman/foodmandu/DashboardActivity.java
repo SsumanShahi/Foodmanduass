@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -44,44 +45,49 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        loadCurrentUser();
+//        loadCurrentUser();
 
 
     }
 
-    private void loadCurrentUser() {
-
-        Userapi userapi = url.getInstance().create(Userapi.class);
-        Call<User> userCall = userapi.getUserDetails(url.token);
-
-        userCall.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(DashboardActivity.this, "Code" + response.code(), Toast.LENGTH_LONG).show();
-                    return;
-                }
-                String imgPath = url.imagePath + response.body().getImage();
-
-                Picasso.get().load(imgPath).into(imgProgileImg);
-
-                StrictModeClass.StrictMode();
-                try{
-                    URL url = new URL(imgPath);
-                    imgProgileImg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
-                Toast.makeText(DashboardActivity.this, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    private void loadCurrentUser() {
+//
+//
+//
+////        imgProgileImg.setImageResource(R.drawable.res);
+//        Userapi userapi = url.getInstance().create(Userapi.class);
+//        Call<User> userCall = userapi.getUserDetails(url.token);
+//
+//
+//        userCall.enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                if(!response.isSuccessful()){
+//                    Toast.makeText(DashboardActivity.this, "Code" + response.code(), Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//                String imgPath = url.imagePath + response.body().getImage();
+//                Log.d("tazag","the image link"+imgPath);
+//
+////                Picasso.get().load(imgPath).into(imgProgileImg);
+//
+////                StrictModeClass.StrictMode();
+////                try{
+////                    URL url = new URL(imgPath);
+////                    imgProgileImg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+////
+////                } catch (IOException e) {
+////                    e.printStackTrace();
+////                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//
+//                Toast.makeText(DashboardActivity.this, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     }
 

@@ -1,6 +1,7 @@
 package com.suman.foodmandu.Adaptar;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.suman.foodmandu.R;
 import com.suman.foodmandu.Url.url;
 import com.suman.foodmandu.model.Details;
+import com.suman.foodmandu.strictmode.StrictModeClass;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 public class DetailsAdaptar extends RecyclerView.Adapter<DetailsAdaptar.DetailsViewHolder> {
@@ -39,24 +43,33 @@ public class DetailsAdaptar extends RecyclerView.Adapter<DetailsAdaptar.DetailsV
 
     @Override
     public void onBindViewHolder(@NonNull DetailsViewHolder holder, int position) {
-        for (Details details : detailsList) {
-            String imgPath = url.imagePath +  details.getImage();
-
-            Log.d("the image link is ","this is message"+ imgPath+details.getName()+detailsList.size());
-
-
-        }
+//        for (Details details : detailsList) {
+//            String imgPath = url.imagePath +  details.getImage();
+//
+//            Log.d("the image link is ","this is message"+ imgPath+details.getName()+detailsList.size());
+//            String imgPath2 = url.imagePath +  details.getImage();
+//            Log.e("Image path2 is :",imgPath2);
+//
+//        }
 
         Details details = detailsList.get(position);
-        String imgPath = url.imagePath +  details.getImage();
-
+        String imgPath = url.imagePath + details.getImage();
+//        Log.e("Image path is :", "iamge patha is " + imgPath);
+//        Picasso.get().load(imgPath).into(holder.card1);
 //        holder.card1.setImageResource(details.getImage());
         holder.tvtitle.setText(details.getItemtype());
         holder.tvname.setText(details.getName());
         holder.tvaddress.setText(details.getLocation());
-        Glide.with(mContext).load(imgPath).into(holder.card1);
 
+        StrictModeClass.StrictMode();
+        try {
+            URL url = new URL(imgPath);
+            holder.card1.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        Glide.with(mContext).load(imgPath).into(holder.card1);
 
     }
 
@@ -69,7 +82,7 @@ public class DetailsAdaptar extends RecyclerView.Adapter<DetailsAdaptar.DetailsV
 
         ImageView card1;
         TextView tvtitle,
-                tvaddress,tvname;
+                tvaddress, tvname;
 
         public DetailsViewHolder(@NonNull View itemView) {
             super(itemView);

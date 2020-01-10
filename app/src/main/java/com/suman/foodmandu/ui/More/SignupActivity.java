@@ -120,7 +120,7 @@ public class SignupActivity extends AppCompatActivity {
     private void saveImageOnly() {
         File file = new File(imagePath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
-        MultipartBody.Part body = MultipartBody.Part.createFormData("myFile",
+        MultipartBody.Part body = MultipartBody.Part.createFormData("image",
                 file.getName(),requestBody);
 
         Userapi userapi = url.getInstance().create(Userapi.class);

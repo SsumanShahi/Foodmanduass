@@ -1,6 +1,7 @@
 package com.suman.foodmandu.Adaptar;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.suman.foodmandu.R;
+import com.suman.foodmandu.Url.url;
 import com.suman.foodmandu.model.Chef;
 import com.suman.foodmandu.model.Special;
+import com.suman.foodmandu.strictmode.StrictModeClass;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 public class SpecialAdaptar extends RecyclerView.Adapter<SpecialAdaptar.SpecialViewHolder>{
@@ -38,8 +44,17 @@ public class SpecialAdaptar extends RecyclerView.Adapter<SpecialAdaptar.SpecialV
     @Override
     public void onBindViewHolder(@NonNull SpecialViewHolder holder, int position) {
         Special special = specials.get(position);
-        holder.card3.setImageResource(special.getSimage());
-        holder.tvtitle3.setText(special.getStitle());
+//        holder.card3.setImageResource(special.getImage());
+        String imgPath = url.imagePath + special.getImage();
+        holder.tvtitle3.setText(special.getName());
+        StrictModeClass.StrictMode();
+        try {
+            URL url = new URL(imgPath);
+            holder.card3.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

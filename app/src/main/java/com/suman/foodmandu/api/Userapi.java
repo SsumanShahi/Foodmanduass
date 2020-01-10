@@ -21,8 +21,7 @@ import retrofit2.http.Part;
 
 public interface Userapi {
 
-    @GET("super7")
-    Call<List<Details>> getsuper7();
+
 
 
     @POST("users/signup")
@@ -34,7 +33,7 @@ public interface Userapi {
 
 
     @POST("users/login")
-    Call<SignupResponse> checklogin(@Body username ulogin);
+    Call<SignupResponse> checklogin(@Body username Username);
 
     @Multipart
     @POST("upload")
@@ -44,6 +43,8 @@ public interface Userapi {
     Call<User> getUserDetails(@Header("Authorization") String token);
 
 
+    @GET("super7")
+    Call<List<Details>> getsuper7();
     @GET("super7")
     Call<Details> getsuperDetails(@Header("Authorization")String token);
 }
